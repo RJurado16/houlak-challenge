@@ -54,20 +54,39 @@ const getArtist = async (headers, artist) => {
 /**
  * Get Several Albums data by IDs and with DESC order by popularity
  */
-const getAlbumsPopularity = async (headers, albumIds) => {
-  const albums = albumIds.join('%2C');
+const getAlbumsPopularity = async (headers, albumsIds) => {
+  let i = 0;
+  let j = 0;
+  let albums = [];
+  let resultsFound = [];
+  
+  while (i < albumsIds.length) {
+    if (!albums[j]) {
+      albums.push([])
+    } else if(albums[j].length === 20) {
+      albums.push([])
+      j++;
+    }
+    albums[j].push(albumsIds[i])  
+    i++;
+  }
+  
+  albums.forEach(el => el.join('%2C'))
 
   try {
-    const result = await axios.get(`${SPOTIFY_API}/albums?ids=${albums}`, { headers });
-
-    const popularityDesc = result.data.albums.sort((a,b) => {
+    for (idCollection of albums) {
+      const result = await axios.get(`${SPOTIFY_API}/albums?ids=${idCollection}`, { headers });
+      resultsFound = [...resultsFound, ...result.data.albums]
+    }
+    
+    resultsFound.sort((a,b) => {
       if (a.popularity < b.popularity) return 1;
       if (a.popularity > b.popularity) return -1;
       return 0;
     })
 
-    return popularityDesc;
-  } catch {
+    return resultsFound;
+  } catch(err) {
     console.log(err)
   }  
 }
