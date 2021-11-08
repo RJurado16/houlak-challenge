@@ -3,6 +3,6 @@ const controllers = require('../controllers/index')
 
 const router = Router();
 
-router.get('/', controllers.testingConnection);
+router.get('/', controllers.getArtistAlbums);
 
 module.exports = router;

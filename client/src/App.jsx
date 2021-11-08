@@ -10,9 +10,9 @@ function App() {
     e.preventDefault();
     try {
       const res = await axios.get(`${BASE_URL}?artist=${input}`);
-      setPrint(res.data.msg);
+      setPrint(res.data);
     } catch(error) {
-      setPrint(error.response.data)
+      alert(error.response.data)
     }
   }
 
@@ -28,7 +28,14 @@ function App() {
         />
         <button type="submit">Submit</button>
       </form>
-      {print && <h2>{print}</h2>}
+      {print?.map(el => 
+        <div>
+          <h3>Title: {el.name}</h3>
+          <p>Popularity: {el.popularity}</p>
+          <img src={el.images[2].url} alt="" />
+        </div>
+      )
+      }
     </div>
   );
 }
