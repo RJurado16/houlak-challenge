@@ -1,6 +1,8 @@
 const axios = require('axios');
+const RequestIp = require('@supercharge/request-ip');
 const { SPOTIFY_API } = require('../utils/config');
 const { getArtist, getAlbumsPopularity, getToken } = require('./helpers/spotify');
+const { logDataToDB } = require('./helpers/db');
 
 const getArtistAlbums = async (req, res, next) => {
   if (req.query.artist) {
@@ -20,10 +22,13 @@ const getArtistAlbums = async (req, res, next) => {
 
       const sortedAlbums = await getAlbumsPopularity(headers, albumIds);
 
+      const ip = RequestIp.getClientIp(req)
+      await logDataToDB(ip, req.query.artist);
+
       return res.json(sortedAlbums);
 
     } catch(err) {
-      next(err)
+      next(err);
     }
   }
 }
