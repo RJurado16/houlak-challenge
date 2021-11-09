@@ -1,28 +1,26 @@
 .wrapper {
-  padding: 70px;
-
-  text-align: center;
-  font-size: 36px;
-  line-height: 42px;
-  color: #ffffff;
-
-
+  @apply px-5;
+  @apply pt-10;
+  @apply text-center;
+  @apply text-white;
+  @apply text-2xl;
+  @apply md:text-4xl;
+  @apply lg:p-16; 
+  @apply lg:text-6xl;
+  
   .interaction {
-    max-width: 800px;
-    margin: auto;
+    @apply mx-auto;
+    @apply mt-10;
 
     input {
-      margin-top: 37px;
-      max-width: 590px;
-      height: 70px;
-      background: #fafafa;
+      @apply w-full;
+      @apply text-lg;
+      @apply px-4;
+      @apply py-2;
+      @apply rounded-3xl;
+      @apply md:w-1/2;
+      @apply lg:max-w-xl;
       box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-      border-radius: 66px;
-      border: none;
-      padding: 0.5% 5%;
-      
-      font-size: 28px;
-      color: black;
     }
   
     input:focus {
@@ -31,15 +29,19 @@
     }
   
     button {
-      background: green;
-      border-radius: 20px;
-      border: none;
-      padding: 2%;
-      margin-left: 50px;
-      
-      font-size: 28px;
-    }
-  }
+      @apply mt-6;
+      @apply mx-auto;
+      @apply bg-green-500;
+      @apply rounded;
+      @apply px-4;
+      @apply py-2;
+      @apply text-lg;
+      @apply md:ml-6;
 
-  
+      &:hover {
+        @apply bg-green-400;
+        transition: background-color 1s;
+      }
+    }
+  }  
 }
