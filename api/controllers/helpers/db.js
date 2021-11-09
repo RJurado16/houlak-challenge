@@ -8,8 +8,12 @@ const {
  */
 const logDataToDB = async (ip, artist_name) => {
   try {
-    const user = await User.create({
-      ip,
+    let [user, created] = await User.findOrCreate({
+      where: {
+        ip
+      }, defaults: {
+        ip
+      }
     });
 
     const search = await Search.create({
