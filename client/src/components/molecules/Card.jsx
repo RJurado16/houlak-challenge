@@ -1,13 +1,15 @@
 import React from 'react';
+import * as styles from './Card.module.scss';
 
 const Card = ({images, name, popularity}) => {
 
   return (
-    <div>
+    <div className={styles.wrapper}>
         <img src={images[1].url} alt="" />
-        
-        <h3><span>Title: </span>{name}</h3>
-        <p><span>Popularity: </span>{popularity}</p>
+        <div className={styles.info}>
+          <h3><span>Title: </span>{name}</h3>
+          <p><span>Popularity: </span>{popularity}</p>
+        </div>      
     </div>
   );
 }
