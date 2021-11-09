@@ -1,41 +1,20 @@
-import React from 'react';
-import axios from 'axios';
-import { BASE_URL } from './utils/constants';
+import React, { useState } from 'react';
+import Form from './components/organisms/Form';
+import Results from './components/organisms/Results';
+import './App.scss'
 
-function App() {
-  const [print, setPrint] = React.useState()
-  const [input, setInput] = React.useState('')
+const App = () => {
+  const [result, setResult] = useState()
+  const updateData = (data) => setResult(data)
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      const res = await axios.get(`${BASE_URL}?artist=${input}`);
-      setPrint(res.data);
-    } catch(error) {
-      alert(error.response.data)
-    }
-  }
+  React.useEffect(() => {
+    console.log(result)
+  }, [result])
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <h1>Welcome</h1>
-        <input 
-          type="text"
-          placeholder="Type artist name"
-          value={input}
-          onChange={e => setInput(e.target.value)}
-        />
-        <button type="submit">Submit</button>
-      </form>
-      {print?.map(el => 
-        <div>
-          <h3>Title: {el.name}</h3>
-          <p>Popularity: {el.popularity}</p>
-          <img src={el.images[2].url} alt="" />
-        </div>
-      )
-      }
+    <div className="app">
+      <Form  updateData={updateData} />
+      <Results data={result} />
     </div>
   );
 }

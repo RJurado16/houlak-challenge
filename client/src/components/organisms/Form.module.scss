@@ -1,0 +1,47 @@
+.wrapper {
+  @apply px-5;
+  @apply pt-10;
+  @apply text-center;
+  @apply text-white;
+  @apply text-2xl;
+  @apply md:text-4xl;
+  @apply lg:p-16; 
+  @apply lg:text-6xl;
+  
+  .interaction {
+    @apply mx-auto;
+    @apply mt-10;
+
+    input {
+      @apply w-full;
+      @apply text-lg;
+      @apply px-4;
+      @apply py-2;
+      @apply rounded-3xl;
+      @apply md:w-1/2;
+      @apply lg:max-w-xl;
+      box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    }
+  
+    input:focus {
+      box-shadow: none;
+      outline: none;
+    }
+  
+    button {
+      @apply mt-6;
+      @apply mx-auto;
+      @apply bg-green-500;
+      @apply rounded;
+      @apply px-4;
+      @apply py-2;
+      @apply text-lg;
+      @apply md:ml-6;
+
+      &:hover {
+        @apply bg-green-400;
+        transition: background-color 1s;
+      }
+    }
+  }  
+}

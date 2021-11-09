@@ -1,0 +1,9 @@
+.wrapper {
+  padding: 90px 60px;
+
+  .results {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 60px;
+  }
+}
