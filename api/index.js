@@ -2,6 +2,7 @@ const express = require('express');
 const morgan = require ('morgan');
 const cors = require('cors');
 const { PORT } = require('./utils/config/');
+const { sequelize } = require('./models/');
 
 const server = express();
 
@@ -25,6 +26,14 @@ server.use((err, req, res, next) => {
   const msg = err?.msg || 'Internal Server Error';
   res.status(status).send(msg);
 });
+
+const connect = async () => {
+  await sequelize.sync({
+    force: true,
+  });
+};
+
+connect();
 
 server.listen(PORT, () => {
   console.log(`Server listening at port ${PORT}`);
