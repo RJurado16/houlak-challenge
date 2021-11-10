@@ -7,10 +7,6 @@ const App = () => {
   const [result, setResult] = useState()
   const updateData = (data) => setResult(data)
 
-  React.useEffect(() => {
-    console.log(result)
-  }, [result])
-
   return (
     <div className="app">
       <Form  updateData={updateData} />
