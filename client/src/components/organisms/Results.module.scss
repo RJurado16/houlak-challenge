@@ -8,6 +8,15 @@
   @apply lg:p-12; 
   @apply lg:text-6xl;
 
+  .title {
+    @apply text-green-400;
+    @apply text-3xl;
+    @apply mb-10;
+    @apply md:text-4xl;
+    @apply lg:mb-16;
+    @apply lg:text-6xl;
+  }
+
   .results {
     @apply flex;
     @apply flex-col;
@@ -23,5 +32,11 @@
     @screen lg {
       grid-template-columns: 1fr 1fr 1fr;
     }
+  }
+
+  .error {
+    @apply text-red-400;
+    @apply text-2xl;
+    @apply md:text-3xl;
   }
 }

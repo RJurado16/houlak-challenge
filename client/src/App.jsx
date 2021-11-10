@@ -10,7 +10,7 @@ const App = () => {
   return (
     <div className="app">
       <Form  updateData={updateData} />
-      <Results data={result} />
+      <Results results={result} />
     </div>
   );
 }
