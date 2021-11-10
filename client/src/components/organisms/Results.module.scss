@@ -1,9 +1,27 @@
 .wrapper {
-  padding: 90px 60px;
+  @apply px-5;
+  @apply pt-16;
+  @apply text-center;
+  @apply text-white;
+  @apply text-2xl;
+  @apply md:text-4xl;
+  @apply lg:p-12; 
+  @apply lg:text-6xl;
 
   .results {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-gap: 60px;
+    @apply flex;
+    @apply flex-col;
+    @apply justify-center;
+    @apply items-center;
+    @apply md:grid;
+
+    @screen md {
+      grid-template-columns: 1fr 1fr;
+      grid-gap: 2rem;
+    }
+
+    @screen lg {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
   }
 }

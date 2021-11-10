@@ -1,18 +1,42 @@
 .wrapper {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-
-  color: #ffffff;
-
-  img {
-    border-radius: 35px;
+  @apply flex;
+  @apply flex-col;
+  @apply justify-center;
+  @apply items-center;
+  @apply mb-16;
+  
+  &:hover {
+    transition: .5s;
+    transform: scale(1.1);
   }
-
+  
+  img {
+    @apply rounded-2xl;
+    @apply mr-auto;
+  }
+  
   .info {
-    margin-top: 39px;
-    line-height: 28.13px;
-    font-size: 22px;
+    @apply w-full;
+    @apply px-4;
+    @apply mt-6;
+    @apply text-left;
+    @apply text-white;
+    @apply text-2xl;
+    @apply lg:text-3xl;
+    
+    & > div {
+      @apply flex;
+      @apply flex-col;
+      @apply lg:flex-row;
+    }
+
+    & > div:first-child {
+      @apply mb-4;
+    }
+    
+    label {
+      @apply text-green-400;
+      @apply mr-3;
+    }
   }
 }
