@@ -10,10 +10,14 @@ const Form = ({ updateData }) => {
     e.preventDefault();
     try {
       const res = await axios.get(`${BASE_URL}?artist=${input}`);
-      updateData(res.data);
+      updateData({
+        artist: input,
+        data: res.data,
+      });
     } catch(error) {
-      error && alert(error.response.data);
+      error && updateData({ data: error.response.data });
     }
+    setInput('');
   }
 
   return (
